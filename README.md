@@ -9,7 +9,7 @@ than that one [js-yaml](http://github.com/nodeca/js-yaml) comes along with.
 
 The scripts of js-yaml-cli run under [Node.js](http://nodejs.org/).
 
-## Installing js-yaml-cli
+## Installation
 
 js-yaml-cli depends on [Node.js](http://nodejs.org/) and [npm](http://npmjs.org/). It's
 installed globally using npm:
