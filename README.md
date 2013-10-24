@@ -1,5 +1,5 @@
-js-yaml-cli
-===========
+JavaScript YAML Command-line utilities
+======================================
 
 Command-line utilities to convert [YAML](http://yaml.org/) files to JSON files and vice versa.
 
