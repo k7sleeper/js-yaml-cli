@@ -1,4 +1,4 @@
 # Changelog
 
-## 0.1.0 - 2013-10-24
-- initial version
+## 0.2.0 - 2013-10-24
+- First public release
