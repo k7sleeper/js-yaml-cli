@@ -1,0 +1,26 @@
+{
+  "name"            : "js-yaml-cli",
+  "version"         : "0.1",
+  "description"     : "YAML 1.2 parser and serializer",
+  "keywords"        : ["yaml", "json", "parser", "serializer"],
+  "homepage"        : "https://github.com/k7sleeper/js-yaml-cli",
+
+  "author"          : {
+                        "name"  : "Klaus Sevensleeper",
+                        "email" : "k7sleeper@gmail.com"
+                      },
+
+  "bugs"            : { "url": "https://github.com/k7sleeper/js-yaml-cli/issues" },
+  "license"         : { "type": "MIT", "url": "https://github.com/nodeca/js-yaml/blob/master/LICENSE" },
+  "repository"      : { "type": "git", "url": "git://github.com/k7sleeper/js-yaml-cli.git" },
+
+  "main"            : "./index.js",
+
+  "bin"             : { "js-yaml": "bin/js-yaml.js" },
+  "scripts"         : { "test": "make test" },
+
+  "dependencies"    : { "argparse": "~ 0.1.11",
+                        "esprima":  "~ 1.0.2" },
+  "devDependencies" : { "mocha": "*" },
+  "engines"         : { "node": ">= 0.6.0" }
+}
