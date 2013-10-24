@@ -21,13 +21,13 @@ npm install -g js-yaml-cli
 If you want you can install js-yaml-cli locally (type `npm install -g js-yaml-cli` in the project directory you want)
 but a global installation is the recommended way.
 
+After successful installation of js-yaml-cli the scripts `yaml2json` and `json2yaml` are available.
+
 ## Usage
 
 ### YAML to JSON
 
-After installation the script `yaml2json` is available
-
-`yaml2json -h` displays the following on the screen:
+`yaml2json -h` shows:
 
 ~~~
 usage: yaml2json [-h] [-v] [-c] [-j] [-o OUTPUT] [-e ENCODING] [-d DIRECTORY]
@@ -56,3 +56,7 @@ Optional arguments:
 The resulting JavaScript object is stored in a .json file in the same
 directory as the source file.
 ~~~
+
+### JSON to YAML
+
+`json2yaml -h` shows:
