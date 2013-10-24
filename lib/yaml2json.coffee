@@ -1,38 +1,13 @@
 fs = require 'fs'
 util = require 'util'
 path = require 'path'
-ArgumentParser = require('argparse').ArgumentParser
 yaml = require 'js-yaml'
 
-# /////////////////////////////////////////////////////////////////////////////
+cli = require './impl/yaml2json/args'
 
-cli = new ArgumentParser
-  prog:     'yaml2json'
-  description: 'Parse a given YAML file, serialize it to JavaScript and store it as JSON file.'
-  version:  '1.0'
-  addHelp:  true
+options = cli.process()
 
-cli.addArgument ['-c', '--compact'],
-  help:   'Display errors in compact mode'
-  action: 'storeTrue'
-
-cli.addArgument ['-j', '--to-json'],
-  help:   'Output a non-funky boring JSON'
-  dest:   'json'
-  action: 'storeTrue'
-
-cli.addArgument ['-t', '--trace'],
-  help:   'Show stack trace on error'
-  action: 'storeTrue'
-
-cli.addArgument ['file'],
-  help: "YAML File to read, UTF-8 encoded, without BOM"
-
-# /////////////////////////////////////////////////////////////////////////////
-
-options = cli.parseArgs()
-
-srcFile = options.file
+srcFile = options.sourceFile
 destFile = path.join path.dirname(srcFile), path.basename(srcFile, path.extname(srcFile)) + '.json'
 
 # /////////////////////////////////////////////////////////////////////////////
