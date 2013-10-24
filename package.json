@@ -1,8 +1,8 @@
 {
   "name"            : "js-yaml-cli",
   "version"         : "0.1",
-  "description"     : "YAML 1.2 parser and serializer",
-  "keywords"        : ["yaml", "json", "parser", "serializer"],
+  "description"     : "Command-line utilities to convert YAML files to JSON files and vice versa.",
+  "keywords"        : ["yaml", "json", "parser", "serializer", "cli", "node"],
   "homepage"        : "https://github.com/k7sleeper/js-yaml-cli",
 
   "author"          : {
