@@ -7,7 +7,7 @@ js-yaml-cli is based on [js-yaml](http://github.com/nodeca/js-yaml)
 and provides a more sophisticated command-line interface 
 than that one [js-yaml](http://github.com/nodeca/js-yaml) comes along with.
 
-The script of js-yaml-cli run under [Node.js](http://nodejs.org/).
+The scripts of js-yaml-cli run under [Node.js](http://nodejs.org/).
 
 ## Installing js-yaml-cli
 
