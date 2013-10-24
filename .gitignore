@@ -1,2 +1,6 @@
 /node_modules
+/bin/*.js
+/lib/*.js
+/bin/*.map
+/lib/*.map
 .idea
