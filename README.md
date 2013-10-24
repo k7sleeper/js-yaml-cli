@@ -21,7 +21,7 @@ npm install -g js-yaml-cli
 If you want you can install js-yaml-cli locally (type `npm install -g js-yaml-cli` in the project directory you want)
 but a global installation is the recommended way.
 
-After successful installation of js-yaml-cli the scripts `yaml2json` and `json2yaml` are available.
+Once installed, you should have access to the commands `yaml2json` and `json2yaml`.
 
 ## Usage
 
