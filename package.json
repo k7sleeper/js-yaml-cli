@@ -22,5 +22,6 @@
   "dependencies"    : { "argparse": "~ 0.1.11",
                         "esprima":  "~ 1.0.2" },
   "devDependencies" : { "mocha": "*" },
-  "engines"         : { "node": ">= 0.6.0" }
+  "engines"         : { "node": ">= 0.8.0" },
+  "preferGlobal"    : true
 }
