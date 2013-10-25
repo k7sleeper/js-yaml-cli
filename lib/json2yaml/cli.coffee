@@ -7,6 +7,14 @@ cli = new ArgumentParser
   version:  '1.0'
   addHelp:  true
 
+cli.addArgument ['-V', '--verbose'],
+  help:   'allow verbose output'
+  action: 'storeTrue'
+
+cli.addArgument ['-q', '--quiet', '--silent'],
+  help:   'be quiet'
+  action: 'storeTrue'
+
 cli.addArgument ['-c', '--compact'],
   help:   'display errors in compact mode'
   action: 'storeTrue'
