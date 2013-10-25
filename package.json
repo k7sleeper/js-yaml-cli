@@ -21,7 +21,7 @@
       "json2yaml": "bin/json2yaml.js"
   },
   "scripts"         : {
-      "test": "jasmine-node --color spec"
+      "test": "jasmine-node --color test"
   },
 
   "dependencies"    : { "argparse": "~ 0.1.15",
