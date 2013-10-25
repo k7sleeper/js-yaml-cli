@@ -20,7 +20,9 @@
       "yaml2json": "bin/yaml2json.js",
       "json2yaml": "bin/json2yaml.js"
   },
-  "scripts"         : { "test": "make test" },
+  "scripts"         : {
+      "test": "jasmine-node spec"
+  },
 
   "dependencies"    : { "argparse": "~ 0.1.15",
                         "js-yaml":  "~ 2.1.3" },
