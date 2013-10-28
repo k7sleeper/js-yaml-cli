@@ -1,3 +1,4 @@
 #!/usr/bin/env node
 
-require('../lib/json2yaml');
+pgmArgs = require('../lib/json2yaml/cli');
+require('../lib').json2yaml(pgmArgs);
