@@ -1,8 +1,9 @@
 node_modules
 lib/**/*.js
 lib/**/*.map
+test/**/*.spec.js
 test/**/*.map
 *.map
 .idea
 Gruntfile.js
-Gruntfile.map
+Console.lnk

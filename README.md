@@ -5,7 +5,10 @@ Command-line utilities to convert [YAML](http://yaml.org/) files to JSON files a
 
 js-yaml-cli is based on [js-yaml](http://github.com/nodeca/js-yaml)
 and provides a more sophisticated command-line interface 
-than that one [js-yaml](http://github.com/nodeca/js-yaml) comes along with.
+than that one [js-yaml](http://github.com/nodeca/js-yaml) comes along with. js-yaml-cli can be used, for example, to
+set-up a [WebStorm](http://www.jetbrains.com/webstorm) file watcher for YAML files.
+
+Currently, depends on [js-yaml](http://github.com/nodeca/js-yaml) 2.1.3.
 
 The scripts of js-yaml-cli run under [Node.js](http://nodejs.org/).
 
