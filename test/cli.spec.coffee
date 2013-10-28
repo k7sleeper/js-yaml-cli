@@ -1,19 +1,36 @@
 shell = require 'shelljs'
 path = require 'path'
-bin = 'node ' + path.resolve path.join __dirname, '..', 'bin', 'phonegap.js'
+bin = 'node ' + path.resolve path.join __dirname, '..', 'bin', 'yaml2json.js'
 
-describe '$ phonegap [options] commands', () ->
+describe '$ yaml2json', () ->
   beforeEach () ->
     spyOn process.stdout, 'write'
 
+  afterEach () ->
+
   it 'should support no arguments', () ->
     process = shell.exec bin + '', { silent: true }
-    expect(process.output).toMatch('Usage:')
+    expect(process.code).toBe 2
+    expect(process.output).toMatch 'error: too few arguments'
+    expect(process.output).toMatch 'usage:'
 
-  it 'should support commands', () ->
-    process = shell.exec bin + ' version', { silent: true }
-    expect(process.output).toMatch /^\w+\.\w+\.\w+/
-
-  it 'should support options', () ->
-    process = shell.exec bin + ' --version', { silent: true }
-    expect(process.output).toMatch /^\w+\.\w+\.\w+/
+  describe 'help option', () ->
+    it 'should support long option', () ->
+      process = shell.exec bin + ' --help', { silent: true }
+      expect(process.code).toBe 0
+      expect(process.output).toMatch 'usage:'
+      expect(process.output).toMatch '-h, --help'
+    it 'should support short option', () ->
+      process = shell.exec bin + ' -h', { silent: true }
+      expect(process.code).toBe 0
+      expect(process.output).toMatch 'usage:'
+      expect(process.output).toMatch '-h, --help'
+  describe 'version option', () ->
+    it 'should support long option', () ->
+      process = shell.exec bin + ' --version', { silent: true }
+      expect(process.code).toBe 0
+      expect(process.output).toMatch /^\w+\.\w+\.\w+/
+    it 'should support short option', () ->
+      process = shell.exec bin + ' -v', { silent: true }
+      expect(process.code).toBe 0
+      expect(process.output).toMatch /^\w+\.\w+\.\w+/

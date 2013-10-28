@@ -1,5 +1,7 @@
-/node_modules
-/lib/**/*.js
-/lib/**/*.map
-/*.map
+node_modules
+lib/**/*.js
+lib/**/*.map
+*.map
 .idea
+Gruntfile.js
+Gruntfile.map
