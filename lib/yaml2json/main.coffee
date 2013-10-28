@@ -4,7 +4,7 @@ path = require 'path'
 yaml = require 'js-yaml'
 
 doTheWork = (modArgs) ->
-  srcFile = modArgs.sourceFile
+  srcFile = modArgs.file
   destFile = path.join path.dirname(srcFile), path.basename(srcFile, path.extname(srcFile)) + '.json'
 
   fs.readFile srcFile, {encoding: 'utf8'}, (error, input) ->
@@ -52,4 +52,4 @@ doTheWork = (modArgs) ->
 
     process.exit 0
 
-module.export = doTheWork
+module.exports = doTheWork

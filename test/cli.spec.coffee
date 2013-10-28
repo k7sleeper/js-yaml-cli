@@ -1,5 +1,7 @@
 shell = require 'shelljs'
 path = require 'path'
+require 'jasmine-expect'
+
 bin = 'node ' + path.resolve path.join __dirname, '..', 'bin', 'yaml2json.js'
 
 describe '$ yaml2json', () ->
