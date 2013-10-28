@@ -1,6 +1,7 @@
 node_modules
 lib/**/*.js
 lib/**/*.map
+test/**/*.map
 *.map
 .idea
 Gruntfile.js
