@@ -33,24 +33,29 @@ Once installed, you should have access to the commands `yaml2json` and `json2yam
 `yaml2json -h` shows:
 
 ~~~
-usage: yaml2json [-h] [-v] [-c] [-j] [-o OUTPUT] [-e ENCODING] [-d DIRECTORY]
-                 [-s] [-t]
+usage: yaml2json [-h] [-v] [-V] [-q] [-c] [-j] [-o OUTPUT] [-e ENC]
+                 [-d DIRECTORY] [-s] [-t]
                  file
 
-Parse a given YAML file, serialize it to JavaScript and store it as JSON file
+Parse a given YAML file, serialize it to JavaScript and store it as JSON file.
 
 Positional arguments:
-  file                  YAML File to process, UTF-8 encoded, without BOM
+  file                  YAML File to process, UTF-8 encoded, without BOM.
+                        Input file encoding can be changed using option -e.
 
 Optional arguments:
   -h, --help            Show this help message and exit.
   -v, --version         Show program's version number and exit.
+  -V, --verbose         allow verbose output
+  -q, --quiet, --silent
+                        be quiet
   -c, --compact         display errors in compact mode
   -j, --to-json         output a non-funky boring JSON
   -o OUTPUT, --output OUTPUT
                         set the output file path for resulting JSON file
-  -e ENCODING, --encoding ENCODING
-                        set the encoding of the YAML source file
+  -e ENC, --encoding ENC
+                        use encoding ENC for reading the the YAML source file.
+                         Allowed values are:
   -d DIRECTORY, --directory DIRECTORY
                         set the output directory for resulting JSON file
   -s, --stdio           listen for and process file over stdio
