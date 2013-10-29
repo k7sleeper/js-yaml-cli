@@ -33,32 +33,55 @@ Once installed, you should have access to the commands `yaml2json` and `json2yam
 `yaml2json -h` shows:
 
 ~~~
-usage: yaml2json [-h] [-v] [-V] [-q] [-c] [-j] [-o OUTPUT] [-e ENC]
-                 [-d DIRECTORY] [-s] [-t]
-                 file
+usage: yaml2json [-h] [-v] [-V] [-q] [-c] [-j] [-m] [-f] [-o OUTPUT] [-e ENC]
+                 [-d DIRECTORY] [-r] [-t]
+                 SOURCE
 
 Parse a given YAML file, serialize it to JavaScript and store it as JSON file.
 
 Positional arguments:
-  file                  YAML File to process, UTF-8 encoded, without BOM.
+  SOURCE                YAML File to process, UTF-8 encoded, without BOM.
                         Input file encoding can be changed using option -e.
+                        If SOURCE denotes a directory all .YAML and .YML
+                        files in that directory are parsed and serialized to
+                        JSON. If option -r is specified all files in all
+                        subdirectories are processed, also. If SOURCE equals
+                        to dash ('-') then yaml2json listens for and
+                        processes input over stdio. Output is then written to
+                        stdout. In thiscase, the program works in quiet mode.
+                        Nothing else than user data is written to stdout.
+                        Only errors are written to stderr.
 
 Optional arguments:
   -h, --help            Show this help message and exit.
   -v, --version         Show program's version number and exit.
   -V, --verbose         allow verbose output
   -q, --quiet, --silent
-                        be quiet
+                        be extra quiet
   -c, --compact         display errors in compact mode
   -j, --to-json         output a non-funky boring JSON
+  -m, --force-multiple  by default each YAML input file is handled as if it
+                        contains multiple documents. Therefore, the resulting
+                        JSON file contains an array of these documents. If a
+                        YAML source file contains only one document, it's not
+                        stored as an array with one element but directly,
+                        without the enclosing array. Option -m can be used to
+                        force storing single-document YAML file as an array
+                        with one element. This option may be usefull if the
+                        source file may contain a single document which is an
+                        array.
+  -f, --fail-fast       fail as soon as an error occurs when processing
+                        multiple files (SOURCE is a directory)
   -o OUTPUT, --output OUTPUT
-                        set the output file path for resulting JSON file
+                        set the file path for the resulting JSON file
   -e ENC, --encoding ENC
-                        use encoding ENC for reading the the YAML source file.
-                         Allowed values are:
+                        use encoding ENC for reading the YAML source file.
+                        Allowed values are: 'hex', 'utf8', 'utf-8', 'ascii',
+                        'binary', 'base64', 'ucs2' 'ucs-2', 'utf16le',
+                        'utf-16le'
   -d DIRECTORY, --directory DIRECTORY
                         set the output directory for resulting JSON file
-  -s, --stdio           listen for and process file over stdio
+  -r, --recurse         recurse into directories if SOURCE denotes a directory
   -t, --trace           show stack trace on error
 
 The resulting JavaScript object is stored in a .json file in the same
@@ -70,3 +93,5 @@ directory as the source file.
 `json2yaml -h` shows:
 
 ## History
+
+See [CHANGELOG](/CHANGELOG.md)

@@ -15,7 +15,7 @@ cli.addArgument ['-V', '--verbose'],
   action: 'storeTrue'
 
 cli.addArgument ['-q', '--quiet', '--silent'],
-  help:   'be quiet'
+  help:   'be extra quiet'
   action: 'storeTrue'
 
 cli.addArgument ['-c', '--compact'],
@@ -38,6 +38,11 @@ cli.addArgument ['-m', '--force-multiple'],
   dest:   'forceMultipleDocuments'
   action: 'storeTrue'
 
+cli.addArgument ['-f', '--fail-fast'],
+  help:   'fail as soon as an error occurs when processing multiple files (SOURCE is a directory)'
+  dest:   'failFast'
+  action: 'storeTrue'
+
 cli.addArgument ['-o', '--output'],
   help:   'set the file path for the resulting JSON file'
   nargs:  1
@@ -58,10 +63,6 @@ cli.addArgument ['-r', '--recurse'],
   help:   'recurse into directories if SOURCE denotes a directory'
   action: 'storeTrue'
 
-cli.addArgument ['-s', '--stdio'],
-  help:   'listen for and process input over stdio'
-  action: 'storeTrue'
-
 cli.addArgument ['-t', '--trace'],
   help:   'show stack trace on error'
   action: 'storeTrue'
@@ -73,6 +74,9 @@ cli.addArgument ['sourceFile'],
           If SOURCE denotes a directory all .YAML and .YML files in that directory
           are parsed and serialized to JSON.
           If option -r is specified all files in all subdirectories are processed, also.
+          If SOURCE equals to dash ('-') then yaml2json listens for and processes input over stdio.
+          Output is then written to stdout. In thiscase, the program works in quiet mode. Nothing else than
+          user data is written to stdout. Only errors are written to stderr.
         """
 
 module.exports = cli.parseArgs()
