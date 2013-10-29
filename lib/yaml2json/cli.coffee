@@ -69,7 +69,7 @@ cli.addArgument ['-t', '--trace'],
 
 cli.addArgument ['sourceFile'],
   metavar: 'SOURCE'
-  help: """YAML File to process, UTF-8 encoded, without BOM.
+  help: """YAML file to process, UTF-8 encoded, without BOM.
           Input file encoding can be changed using option -e.
           If SOURCE denotes a directory all .YAML and .YML files in that directory
           are parsed and serialized to JSON.
