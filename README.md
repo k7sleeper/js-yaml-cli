@@ -68,3 +68,5 @@ directory as the source file.
 ### JSON to YAML
 
 `json2yaml -h` shows:
+
+## History

@@ -1,0 +1,16 @@
+---
+# multiple documents in one YAML file
+
+# the first document (or object)
+name: doc1
+attr1: value1.1
+attr2: value1.2
+attr3: 3
+
+---
+# the second document (or object)
+
+name: doc2
+attr1: value1
+attr2: value2
+attr3: 3
