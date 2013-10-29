@@ -3,6 +3,7 @@ lib/**/*.js
 lib/**/*.map
 test/**/*.spec.js
 test/**/*.map
+test/data/sample1.json
 *.map
 .idea
 Gruntfile.js
