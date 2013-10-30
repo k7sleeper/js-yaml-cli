@@ -31,7 +31,9 @@
     "json2yaml": "bin/json2yaml.js"
   },
   "scripts": {
-    "test": "jasmine-node --color --coffee test"
+    "build"     : "grunt build",
+    "prepublish": "npm run build",
+    "test"      : "jasmine-node --color --coffee --captureExceptions test"
   },
   "dependencies": {
     "argparse": "~ 0.1.15",

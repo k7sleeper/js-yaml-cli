@@ -1,10 +1,12 @@
+.idea
+npm-debug.log
+*.map
+Gruntfile.js
+Console.lnk
+
 node_modules
 lib/**/*.js
 lib/**/*.map
 test/**/*.spec.js
 test/**/*.map
 test/data/sample1.json
-*.map
-.idea
-Gruntfile.js
-Console.lnk
