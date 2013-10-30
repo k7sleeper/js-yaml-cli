@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.3.0 - *under development*
+- added `"use strict"` to both scripts in `bin`
+
 ## 0.2.0 - 2013-10-30
 - many fixes
 - added command-line options `-r`, `-m`, `f`
