@@ -1,7 +1,7 @@
+path = require 'path'
 ArgumentParser = require('argparse').ArgumentParser
 
 cli = new ArgumentParser
-  prog:     'yaml2json'
   description: 'Parse a given YAML file, serialize it to JavaScript and store it as JSON file.'
   epilog: 'The resulting JavaScript object is stored in a .json file in the same directory as the source file.'
   version:  '1.0'
@@ -44,8 +44,9 @@ cli.addArgument ['-t', '--trace'],
   help:   'show stack trace on error'
   action: 'storeTrue'
 
-cli.addArgument ['file'],
+cli.addArgument ['sourceFile'],
   help: "YAML File to process, UTF-8 encoded, without BOM"
+  metavar: 'SOURCE'
 
 processCommandLineArgiments = () ->
   cli.parseArgs()

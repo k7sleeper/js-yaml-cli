@@ -25,7 +25,7 @@ describe 'yaml2json should work', () ->
 
   it "and rc should be #{exitCodes.OK}", (done) ->
     yaml2json
-      file: sample1.yamlSourceFile
+      sourceFile: sample1.yamlSourceFile
     , (rc) ->
       expect(rc).toBe exitCodes.OK
       expect(fs.existsSync sample1.jsonTargetFile).toBe true
@@ -37,14 +37,14 @@ describe 'yaml2json should fail', () ->
 
   it 'if source file does not exist', (done) ->
     yaml2json
-      file: NOT_EXISTENT_FILE
+      sourceFile: NOT_EXISTENT_FILE
     , (rc) ->
       expect(rc).toBe exitCodes.FILE_NOT_FOUND
       done()
 
   it 'if source file has syntax errors', (done) ->
     yaml2json
-      file: INVALID_YAML_FILE
+      sourceFile: INVALID_YAML_FILE
     , (rc) ->
       expect(rc).toBe exitCodes.YAML_PARSING_ERROR
       done()

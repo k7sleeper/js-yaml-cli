@@ -4,14 +4,14 @@ xUtils = require '../utils'
 pkg = xUtils.pkg
 
 cli = new ArgumentParser
-  prog:     'yaml2json'
+  prog       : 'yaml2json'
   description: 'Parse a given YAML file, serialize it to JavaScript and store it as JSON file.'
-  epilog: 'The resulting JavaScript object is stored in a .json file in the same directory as the source file.'
-  version:  pkg.version
-  addHelp:  true
+  epilog     : 'The resulting JavaScript object is stored in a .json file in the same directory as the source file.'
+  version    :  pkg.version
+  addHelp    :  true
 
 cli.addArgument ['-V', '--verbose'],
-  help:   'allow verbose output'
+  help:   'print extra information per each processed file'
   action: 'storeTrue'
 
 cli.addArgument ['-q', '--quiet', '--silent'],
@@ -74,10 +74,12 @@ cli.addArgument ['sourceFile'],
           If SOURCE denotes a directory all .YAML and .YML files in that directory
           are parsed and serialized to JSON.
           If option -r is specified all files in all subdirectories are processed, also.
-          If SOURCE equals to dash ('-') then yaml2json listens for and processes input over stdio.
-          Output is then written to stdout. In thiscase, the program works in quiet mode. Nothing else than
+          If argument SOURCE is not present then yaml2json listens for and processes input over stdio.
+          Output is then written to stdout. In this case, the program works in quiet mode. Nothing else than
           user data is written to stdout. Only errors are written to stderr.
         """
+  nargs: '?'
+  default: '-'
 
 module.exports = cli.parseArgs()
 

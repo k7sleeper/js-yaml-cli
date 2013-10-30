@@ -47,6 +47,8 @@ processYamlFile = (srcFile, destFile, options, cb) ->
 doTheWork = (modArgs, cb) ->
   srcFile = modArgs.sourceFile
 
+  callCb = (rc) -> if cb then _.defer cb, rc
+
   if _s.trim(srcFile) == '-'
     # handle input over stdio
   else
@@ -55,10 +57,10 @@ doTheWork = (modArgs, cb) ->
     catch error
       if 'ENOENT' == error.code
         console.error "File not found: #{srcFile}"
-        if cb then _.defer cb exitCodes.FILE_NOT_FOUND
+        callCb exitCodes.FILE_NOT_FOUND
         return
       console.error modArgs.trace and error.stack or error.message or String error
-      if cb then _.defer cb exitCodes.FILE_ACCESS_ERROR
+      callCb exitCodes.FILE_ACCESS_ERROR
       return
     if fstat.isFile()
       destFile = path.join path.dirname(srcFile), path.basename(srcFile, path.extname(srcFile)) + '.json'
@@ -74,7 +76,7 @@ doTheWork = (modArgs, cb) ->
       fileStream.on 'close', () -> if cb then cb exitCodes.OK
     else
       console.error "Invalid file type of YAML source file! Given file '#{srcFile}' neither denotes a file nor a directory."
-      if cb then _.defer cb exitCodes.FILE_NOT_FOUND
+      callCb exitCodes.FILE_ACCESS_ERROR
       return
 
 module.exports = doTheWork

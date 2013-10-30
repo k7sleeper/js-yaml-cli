@@ -10,7 +10,7 @@ describe '$ yaml2json', () ->
 
   afterEach () ->
 
-  it 'should support no arguments', () ->
+  it 'should fail if called without arguments', () ->
     process = shell.exec bin + '', { silent: true }
     expect(process.code).toBe 2
     expect(process.output).toMatch 'error: too few arguments'

@@ -5,7 +5,7 @@ yaml = require 'js-yaml'
 exitCodes = require '../exit-codes'
 
 doTheWork = (modArgs, cb) ->
-  srcFile = modArgs.file
+  srcFile = modArgs.sourceFile
   destFile = path.join path.dirname(srcFile), path.basename(srcFile, path.extname(srcFile)) + '.json'
 
   fs.readFile srcFile, {encoding: 'utf8'}, (error, input) ->

@@ -35,27 +35,27 @@ Once installed, you should have access to the commands `yaml2json` and `json2yam
 ~~~
 usage: yaml2json [-h] [-v] [-V] [-q] [-c] [-j] [-m] [-f] [-o OUTPUT] [-e ENC]
                  [-d DIRECTORY] [-r] [-t]
-                 SOURCE
+                 [SOURCE]
 
 Parse a given YAML file, serialize it to JavaScript and store it as JSON file.
 
 Positional arguments:
-  SOURCE                YAML File to process, UTF-8 encoded, without BOM.
+  SOURCE                YAML file to process, UTF-8 encoded, without BOM.
                         Input file encoding can be changed using option -e.
                         If SOURCE denotes a directory all .YAML and .YML
                         files in that directory are parsed and serialized to
                         JSON. If option -r is specified all files in all
-                        subdirectories are processed, also. If SOURCE equals
-                        to dash ('-') then yaml2json listens for and
+                        subdirectories are processed, also. If argument
+                        SOURCE is not present then yaml2json listens for and
                         processes input over stdio. Output is then written to
-                        stdout. In thiscase, the program works in quiet mode.
+                        stdout. In this case, the program works in quiet mode.
                         Nothing else than user data is written to stdout.
                         Only errors are written to stderr.
 
 Optional arguments:
   -h, --help            Show this help message and exit.
   -v, --version         Show program's version number and exit.
-  -V, --verbose         allow verbose output
+  -V, --verbose         print extra information per each processed file
   -q, --quiet, --silent
                         be extra quiet
   -c, --compact         display errors in compact mode
