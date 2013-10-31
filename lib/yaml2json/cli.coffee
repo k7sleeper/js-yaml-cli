@@ -79,7 +79,6 @@ cli.addArgument ['sourceFile'],
           user data is written to stdout. Only errors are written to stderr.
         """
   nargs: '?'
-  default: '-'
+  defaultValue: '-'
 
 module.exports = cli.parseArgs()
-

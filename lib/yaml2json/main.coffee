@@ -17,30 +17,37 @@ processYamlFile = (srcFile, destFile, options, cb) ->
       return
 
     fileName = path.basename srcFile
-    try
-      jsObjects = []
-      res = yaml.loadAll input, ((jsObject) ->
-        jsObjects.push(jsObject)), { filename: fileName, strict: true}
-      if 0 == jsObjects.length
-        jsObjects = null
-      else if 1 == jsObjects.length
-        jsObjects = jsObjects[0]
-    catch error
-      if options.trace and error.stack
-        console.error error.stack
-      else
-        console.error error.toString options.compact
-      cb exitCodes.YAML_PARSING_ERROR if cb
-      return
+    processYamlString input, fileName, options, (rc, jsonString) ->
+      if rc == exitCodes.OK
+        fs.writeFileSync destFile, jsonString
+      cb rc
 
-    if options.json
-      resultString = JSON.stringify jsObjects, null, '  '
+# -----------------------------------------------------------------------------
+
+processYamlString = (yamlString, fn, options, cb) ->
+  # Boolean(fn) == true <=> source of yamlString is a file
+  jsObjects = []
+  yamlParserOptions = { strict: true}
+  yamlParserOptions.filename = fn if fn
+  try
+    yaml.loadAll yamlString, ((jsObject) -> jsObjects.push(jsObject)), yamlParserOptions
+    if 0 == jsObjects.length
+      jsObjects = null
+    else if 1 == jsObjects.length
+      jsObjects = jsObjects[0]
+  catch error
+    if options.trace and error.stack
+      console.error error.stack
     else
-      resultString = "\n" + util.inspect(jsObjects, false, 10, true) + "\n"
-    fs.writeFileSync destFile, resultString
-
-    if cb then cb exitCodes.OK
+      console.error error.toString options.compact
+    cb exitCodes.YAML_PARSING_ERROR
     return
+
+  if options.json
+    resultString = JSON.stringify jsObjects, null, '  '
+  else
+    resultString = "\n" + util.inspect(jsObjects, false, 10, true) + "\n"
+  cb exitCodes.OK, resultString
 
 # -----------------------------------------------------------------------------
 
@@ -50,13 +57,23 @@ doTheWork = (modArgs, cb) ->
   callCb = (rc) -> if cb then _.defer cb, rc
 
   if _s.trim(srcFile) == '-'
-    # handle input over stdio
+    # read input from stdio and parse it as YAML input
+    process.stdin.resume()
+    process.stdin.setEncoding 'utf8'
+    yamlInputString = ''
+    process.stdin.on 'data', (chunk) ->
+      yamlInputString += chunk
+    process.stdin.on 'end', () ->
+      processYamlString yamlInputString, null, modArgs, (rc, jsonString) ->
+        if rc == exitCodes.OK
+          process.stdout.write jsonString
+        cb rc
   else
     try
       fstat = fs.statSync srcFile
     catch error
       if 'ENOENT' == error.code
-        console.error "File not found: #{srcFile}"
+        console.error "File not found: '#{srcFile}'"
         callCb exitCodes.FILE_NOT_FOUND
         return
       console.error modArgs.trace and error.stack or error.message or String error
@@ -64,7 +81,7 @@ doTheWork = (modArgs, cb) ->
       return
     if fstat.isFile()
       destFile = path.join path.dirname(srcFile), path.basename(srcFile, path.extname(srcFile)) + '.json'
-      processYamlFile srcFile, destFile, modArgs, cb
+      processYamlFile srcFile, destFile, modArgs, callCb
     else if fstat.isDirectory()
       srcDir = srcFile
       fileStream = readdirp { root: srcDir, fileFilter: ['*.yaml', '*.yml'] }
@@ -73,7 +90,7 @@ doTheWork = (modArgs, cb) ->
         destFile = path.join srcDir, entry.parentDir, path.basename(entry.name, path.extname(entry.name)) + '.json'
         processYamlFile srcFile, destFile, modArgs, (exitCode) ->
       # fileStream.on 'end', () -> if cb then cb exitCodes.OK
-      fileStream.on 'close', () -> if cb then cb exitCodes.OK
+      fileStream.on 'close', () -> callCb exitCodes.OK
     else
       console.error "Invalid file type of YAML source file! Given file '#{srcFile}' neither denotes a file nor a directory."
       callCb exitCodes.FILE_ACCESS_ERROR
