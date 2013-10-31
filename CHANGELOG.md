@@ -1,5 +1,7 @@
 # Changelog
 
+## 0.4.0 - *under development*
+
 ## 0.3.0 - 2013-10-30
 - added `"use strict"` to both scripts in `bin`
 - supports reading YAML input from stdin
