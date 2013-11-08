@@ -1,5 +1,7 @@
 # Changelog
 
+## 0.5.0 - *in development*
+
 ## 0.4.0 - 2013-11-08
 - removed command-line option `-j`. Correct JSON will be generated without having to specify a command-line option.
   Other formats may be generated using a command-line option, later.
