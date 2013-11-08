@@ -49,7 +49,7 @@ Positional arguments:
                         SOURCE is not present then yaml2json listens for and
                         processes input over stdio. Output is then written to
                         stdout. In this case, the program works in quiet mode.
-                        Nothing else than user data is written to stdout.
+                         Nothing else than user data is written to stdout.
                         Only errors are written to stderr.
 
 Optional arguments:
@@ -85,7 +85,6 @@ Optional arguments:
   -t, --trace           show stack trace on error
 
 The resulting JavaScript object is stored in a .json file in the same
-directory as the source file.
 ~~~
 
 ### JSON to YAML

@@ -1,6 +1,8 @@
 # Changelog
 
-## 0.4.0 - *under development*
+## 0.4.0 - 2013-11-08
+- removed command-line option `-j`. Correct JSON will be generated without having to specify a command-line option.
+  Other formats may be generated using a command-line option, later.
 
 ## 0.3.0 - 2013-10-30
 - added `"use strict"` to both scripts in `bin`

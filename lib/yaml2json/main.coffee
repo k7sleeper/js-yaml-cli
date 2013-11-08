@@ -42,11 +42,7 @@ processYamlString = (yamlString, fn, options, cb) ->
       console.error error.toString options.compact
     cb exitCodes.YAML_PARSING_ERROR
     return
-
-  if options.json
-    resultString = JSON.stringify jsObjects, null, '  '
-  else
-    resultString = "\n" + util.inspect(jsObjects, false, 10, true) + "\n"
+  resultString = JSON.stringify jsObjects, null, '  '
   cb exitCodes.OK, resultString
 
 # -----------------------------------------------------------------------------

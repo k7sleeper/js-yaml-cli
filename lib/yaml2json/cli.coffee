@@ -22,11 +22,6 @@ cli.addArgument ['-c', '--compact'],
   help:   'display errors in compact mode'
   action: 'storeTrue'
 
-cli.addArgument ['-j', '--to-json'],
-  help:   'output a non-funky boring JSON'
-  dest:   'json'
-  action: 'storeTrue'
-
 cli.addArgument ['-m', '--force-multiple'],
   help:   """by default each YAML input file is handled as if it contains multiple documents.
              Therefore, the resulting JSON file contains an array of these documents.
