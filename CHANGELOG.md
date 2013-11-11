@@ -1,6 +1,10 @@
 # Changelog
 
-## 0.5.0 - *in development*
+## 0.5.1 - 2013-11-11
+- fixed documentation
+
+## 0.5.0 - 2013-11-08
+- no changes to `0.4.0`. Accidentally released.
 
 ## 0.4.0 - 2013-11-08
 - removed command-line option `-j`. Correct JSON will be generated without having to specify a command-line option.

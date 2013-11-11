@@ -33,7 +33,7 @@ Once installed, you should have access to the commands `yaml2json` and `json2yam
 `yaml2json -h` shows:
 
 ~~~
-usage: yaml2json [-h] [-v] [-V] [-q] [-c] [-j] [-m] [-f] [-o OUTPUT] [-e ENC]
+usage: yaml2json [-h] [-v] [-V] [-q] [-c] [-m] [-f] [-o OUTPUT] [-e ENC]
                  [-d DIRECTORY] [-r] [-t]
                  [SOURCE]
 
@@ -59,7 +59,6 @@ Optional arguments:
   -q, --quiet, --silent
                         be extra quiet
   -c, --compact         display errors in compact mode
-  -j, --to-json         output a non-funky boring JSON
   -m, --force-multiple  by default each YAML input file is handled as if it
                         contains multiple documents. Therefore, the resulting
                         JSON file contains an array of these documents. If a
@@ -84,7 +83,7 @@ Optional arguments:
   -r, --recurse         recurse into directories if SOURCE denotes a directory
   -t, --trace           show stack trace on error
 
-The resulting JavaScript object is stored in a .json file in the same
+The resulting JavaScript object is stored in a .json file in the same directory as the source file.
 ~~~
 
 ### JSON to YAML
