@@ -6,6 +6,7 @@ yaml = require 'js-yaml'
 _ = require 'lodash'
 _s = require 'underscore.string'
 exitCodes = require '../exit-codes'
+console = (require '../utils/console')('yaml2json')
 
 # -----------------------------------------------------------------------------
 
@@ -88,6 +89,7 @@ doTheWork = (modArgs, cb) ->
       # fileStream.on 'end', () -> if cb then cb exitCodes.OK
       fileStream.on 'close', () -> callCb exitCodes.OK
     else
+      # this code should never be reached
       console.error "Invalid file type of YAML source file! Given file '#{srcFile}' neither denotes a file nor a directory."
       callCb exitCodes.FILE_ACCESS_ERROR
       return

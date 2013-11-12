@@ -88,8 +88,8 @@ The resulting JavaScript object is stored in a .json file in the same directory 
 
 ### JSON to YAML
 
-`json2yaml -h` shows:
+`json2yaml` is still in development. It should not be used.
 
 ## History
 
-See [CHANGELOG](/CHANGELOG.md)
+See [CHANGELOG](CHANGELOG.md)
