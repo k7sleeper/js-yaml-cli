@@ -25,7 +25,7 @@ doTheWork = (modArgs, cb) ->
         try
           output = []
           yaml.loadAll input, ((doc) -> output.push(doc)), {}
-          isYaml = true;
+          isYaml = true
 
           if 0 == output.length
             output = null

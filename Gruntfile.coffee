@@ -15,10 +15,19 @@ module.exports = (grunt) ->
         src: ['**/*.spec.coffee']
         dest: 'test'
         ext: '.spec.js'
+    coffeelint:
+      # global options
+      options:
+        max_line_length:
+          value: 120
+          level: 'warn'
+      app: ['bin/**/*.coffee', 'lib/**/*.coffee']
     watch:
       app:
         files: '**/*.coffee'
         tasks: ['coffee:compile']
+
+  grunt.loadNpmTasks 'grunt-coffeelint'
 
   # grunt.loadNpmTasks 'grunt-contrib-copy'
   grunt.loadNpmTasks 'grunt-contrib-coffee'
@@ -26,5 +35,5 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'cs-compile-tests', ['coffee:compileTestSpecs']
   grunt.registerTask 'cs-compile-all', ['coffee:compile', 'cs-compile-tests']
-  grunt.registerTask 'build', ['coffee:compile']
+  grunt.registerTask 'build', ['coffee:compile', 'coffeelint']
   grunt.registerTask 'default', ['build']

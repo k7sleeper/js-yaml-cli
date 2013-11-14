@@ -90,7 +90,8 @@ doTheWork = (modArgs, cb) ->
       fileStream.on 'close', () -> callCb exitCodes.OK
     else
       # this code should never be reached
-      console.error "Invalid file type of YAML source file! Given file '#{srcFile}' neither denotes a file nor a directory."
+      console.error ("Invalid file type of YAML source file! Given file '#{srcFile}'" +
+                          " neither denotes a file nor a directory.")
       callCb exitCodes.FILE_ACCESS_ERROR
       return
 
