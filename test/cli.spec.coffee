@@ -16,23 +16,22 @@ describe '$ yaml2json', () ->
     expect(process.output).toMatch 'error: too few arguments'
     expect(process.output).toMatch 'usage:'
 
-  describe 'help option', () ->
-    it 'should support long option', () ->
+  describe 'should support option', () ->
+    it '--help', () ->
       process = shell.exec bin + ' --help', { silent: true }
       expect(process.code).toBe 0
       expect(process.output).toMatch 'usage:'
       expect(process.output).toMatch '-h, --help'
-    it 'should support short option', () ->
+    it '-h', () ->
       process = shell.exec bin + ' -h', { silent: true }
       expect(process.code).toBe 0
       expect(process.output).toMatch 'usage:'
       expect(process.output).toMatch '-h, --help'
-  describe 'version option', () ->
-    it 'should support long option', () ->
+    it '--version', () ->
       process = shell.exec bin + ' --version', { silent: true }
       expect(process.code).toBe 0
       expect(process.output).toMatch /^\w+\.\w+\.\w+/
-    it 'should support short option', () ->
+    it '-v', () ->
       process = shell.exec bin + ' -v', { silent: true }
       expect(process.code).toBe 0
       expect(process.output).toMatch /^\w+\.\w+\.\w+/

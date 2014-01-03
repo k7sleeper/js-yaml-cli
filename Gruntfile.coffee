@@ -28,12 +28,13 @@ module.exports = (grunt) ->
         tasks: ['coffee:compile']
 
   grunt.loadNpmTasks 'grunt-coffeelint'
-
-  # grunt.loadNpmTasks 'grunt-contrib-copy'
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-watch'
 
-  grunt.registerTask 'cs-compile-tests', ['coffee:compileTestSpecs']
-  grunt.registerTask 'cs-compile-all', ['coffee:compile', 'cs-compile-tests']
-  grunt.registerTask 'build', ['coffee:compile', 'coffeelint']
+  grunt.registerTask 'check', ['coffeelint']
+  grunt.registerTask 'compile', ['coffee:compile']
+  grunt.registerTask 'compile-tests', ['coffee:compileTestSpecs']
+  grunt.registerTask 'compile-all', ['compile', 'compile-tests']
+  grunt.registerTask 'build', ['check', 'compile']
+  grunt.registerTask 'build-all', ['check', 'compile-all']
   grunt.registerTask 'default', ['build']
