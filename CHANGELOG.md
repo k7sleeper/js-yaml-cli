@@ -4,6 +4,7 @@
 - improved documentation
 - console output moved to an extra utility component
 - upgraded dependency to `lodash`from 2.2.1 to 2.4.1
+- upgraded dependency to `js-yaml`from 2.1.3 to 3.0.1
 - added `coffeelint` checks
 
 ## 0.5.1 - 2013-11-11
