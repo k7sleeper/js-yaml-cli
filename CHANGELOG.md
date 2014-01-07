@@ -1,9 +1,9 @@
 # Changelog
 
-## 0.6.0 - *under development*
+## 0.6.0 - 2014-01-07
 - improved documentation
 - console output moved to an extra utility component
-- upgraded dependency to `lodash`from 2.2.1 to 2.3.0
+- upgraded dependency to `lodash`from 2.2.1 to 2.4.1
 - added `coffeelint` checks
 
 ## 0.5.1 - 2013-11-11

@@ -2,26 +2,25 @@ shell = require 'shelljs'
 path = require 'path'
 require 'jasmine-expect'
 
-bin = 'node ' + path.join 'bin', 'yaml2json.js'
+bin = "node #{path.join 'bin', 'yaml2json.js'}"
 
 describe '$ yaml2json', () ->
   beforeEach () ->
-    spyOn process.stdout, 'write'
 
   afterEach () ->
 
   it 'should fail if called without arguments', () ->
-    process = shell.exec bin + '', { silent: true }
-    expect(process.code).toBe 2
-    expect(process.output).toMatch 'error: too few arguments'
-    expect(process.output).toMatch 'usage:'
+    prc = shell.exec bin + ''
+    expect(prc.code).toBe 2
+    expect(prc.output).toMatch 'error: too few arguments'
+    expect(prc.output).toMatch 'usage:'
 
   describe 'should support option', () ->
     it '--help', () ->
-      process = shell.exec bin + ' --help', { silent: true }
-      expect(process.code).toBe 0
-      expect(process.output).toMatch 'usage:'
-      expect(process.output).toMatch '-h, --help'
+      prc = shell.exec bin + ' --help', { silent: true }
+      expect(prc.code).toBe 0
+      expect(prc.output).toMatch 'usage:'
+      expect(prc.output).toMatch '-h, --help'
     it '-h', () ->
       process = shell.exec bin + ' -h', { silent: true }
       expect(process.code).toBe 0

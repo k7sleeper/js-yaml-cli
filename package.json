@@ -33,7 +33,7 @@
   "scripts": {
     "build": "grunt build",
     "prepublish": "npm run build",
-    "test": "node ./node_modules/jasmine-node/bin/jasmine-node --color --coffee --captureExceptions test"
+    "test": "node ./node_modules/jasmine-node/bin/jasmine-node --verbose --color --coffee --captureExceptions test"
   },
   "dependencies": {
     "argparse": "~ 0.1.15",

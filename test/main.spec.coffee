@@ -1,5 +1,4 @@
 fs = require 'fs'
-shell = require 'shelljs'
 path = require 'path'
 require 'jasmine-expect'
 
