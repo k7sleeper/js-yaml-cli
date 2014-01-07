@@ -40,7 +40,7 @@ usage: yaml2json [-h] [-v] [-V] [-q] [-c] [-m] [-f] [-o OUTPUT] [-e ENC]
 Parse a given YAML file, serialize it to JavaScript and store it as JSON file.
 
 Positional arguments:
-  SOURCE                YAML file to process, UTF-8 encoded (if not modified by option -e), without BOM.
+  SOURCE                YAML file to process, UTF-8 encoded, without BOM.
                         Input file encoding can be changed using option -e.
                         If SOURCE denotes a directory all .yaml and .yml
                         files in that directory are parsed and serialized to
