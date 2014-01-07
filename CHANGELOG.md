@@ -1,5 +1,7 @@
 # Changelog
 
+## 0.7.0 - *under development*
+
 ## 0.6.0 - 2014-01-07
 - improved documentation
 - console output moved to an extra utility component
